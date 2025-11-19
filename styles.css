@@ -204,15 +204,16 @@ a {
     transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   will-change: opacity, transform;
 
-  background-color: rgba(96, 48, 177, 0.38);
-  background-color: var(
-    --md-theme-default-primary-on-,
-    rgba(96, 48, 177, 0.38)
-  );
+
   background-color: rgba(68, 138, 255, 0.38);
   background-color: var(
     --md-theme-default-primary-on-,
     rgba(68, 138, 255, 0.38)
+  );
+    background-color: rgba(96, 48, 177, 0.38);
+  background-color: var(
+    --md-theme-default-primary-on-,
+    rgba(96, 48, 177, 0.38)
   );
   /* element.style {
     position: absolute;
@@ -239,11 +240,11 @@ cubic-bezier(.4, 0, .2, 1);
   height: 100%;
   position: absolute;
 
-  left: -70%;
+  left: -150%;
   /* left: -150%; */
   transform-origin: top left;
-
-  animation: b 2s linear infinite;
+  background-color: rgb(96, 52, 177);
+  animation: progress-bar2 2000ms linear infinite;
 
   /*
     will-change: transform;
@@ -259,11 +260,11 @@ cubic-bezier(.4, 0, .2, 1);
   position: absolute;
   left: -55%;
   transform-origin: top left;
-
+  background-color: rgb(96, 52, 177);
+  animation: progress-bar 2000ms linear infinite;
   /* fill, .md-progress-bar.md-query .md-progress-bar-fill {
     
-    animation: d 2s 
-linear infinite;
+   
 }
 
 .md-progress-bar-buffer, .md-progress-bar-buffer:after, .md-progress-bar-fill, .md-progress-bar-fill:after, .md-progress-bar-track, .md-progress-bar-track:after {
@@ -279,4 +280,43 @@ linear infinite;
   transform-origin: top left;
 
   border: 1px solid purple;
+}
+
+@keyframes progress-bar {
+  0% {
+    animation-timing-function: cubic-bezier(0.15, 0, 0.52, 0.41);
+    transform: translateX(0);
+  }
+  25% {
+    animation-timing-function: cubic-bezier(0.31, 0.28, 0.8, 0.73);
+    transform: translateX(37.65%);
+  }
+  50% {
+    animation-timing-function: cubic-bezier(0.4, 0.63, 0.6, 0.9);
+    transform: translateX(84.39%);
+  }
+  100% {
+    transform: translateX(160.28%);
+  }
+}
+
+
+
+@keyframes progress-bar2 {
+0% {
+    transform: translateX(0);
+}
+20% {
+    animation-timing-function: 
+cubic-bezier(.5, 0, .7, .5);
+    transform: translateX(0);
+}
+60% {
+    animation-timing-function: 
+cubic-bezier(.3, .38, .55, .96);
+    transform: translateX(83.67%);
+}
+100% {
+    transform: translateX(200.61%);
+}
 }
