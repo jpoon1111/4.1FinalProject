@@ -10,7 +10,6 @@
 header {
   position: relative;
   height: 326px;
-  padding: 40px 15px;
   width: 100%;
 }
 
@@ -20,6 +19,7 @@ nav {
   justify-content: space-between;
   align-items: center;
   margin: 0 auto;
+  padding:22px 0;
   width: 100%;
   max-width: 1200px;
   z-index: 3;
@@ -88,27 +88,18 @@ a {
   color: #fff;
 }
 
+
 .search__bar--wrapper {
   position: absolute;
   width: 100%;
   z-index: 3;
-  margin-top: 40px;
-  overflow: hidden;
-  top: 0px;
-  left: 0px;
-  right: 0px;
-}
+} 
+
 
 #search {
   position: relative;
   display: flex;
   flex-direction: column;
-
-  /* arch[data-v-040c1d60] {
-    position: relative;
-    padding: 40px 20px;
-    display: flex;
-    flex-direction: column; */
 }
 
 .search__title {
@@ -118,7 +109,7 @@ a {
   font-weight: 300;
   line-height: 1.5;
   letter-spacing: 0.1em;
-  /* margin-bottom: 40px; */
+  margin-bottom: 40px;
 }
 
 .search__title::first-letter {
@@ -491,7 +482,7 @@ input[type="range"]:hover::-ms-thumb {
     */
 }
 
-.svg-inline--fa {
+.loading-state svg{
   font-size: 30px;
   color: rgb(96, 48, 177);
   width:1em;
