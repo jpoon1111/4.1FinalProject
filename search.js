@@ -43,7 +43,15 @@ let currentMovies;
 //   main();
 
 
-
+/**
+The functions slideOne() and slideTwo() are executed only after the webpage is completely loaded.
+This guarantees that all DOM elements are accessible when these functions run, preventing potential errors from attempting to access elements that are not yet rendered.
+2. Indicators of Initial State
+Calling slideOne() and slideTwo() immediately upon load likely sets the initial state of your sliders based on their current values.
+This allows you to display their values correctly and ensures that any related visual elements, such as the fill color of the slider track, are updated from the start.
+3. Preventing Race Conditions
+Without window.onload, if your script is placed in the <head> section without proper deferment, the code might run before the elements it references are available, leading to null or undefined errors.
+ */
 window.onload = function () {
 
   slideOne();
@@ -80,8 +88,14 @@ function slideTwo() {
   }
   displayValTwo.textContent = sliderTwo.value;
   fillColor();
-}
+ }
 
+
+ // this will calculate the current range and fill based on where it is
+// fills the color gray for areas not part of the range
+// this will work anything between 0 to current thumb for slider1
+// and fills the range between two numbers in purple
+// this will work anything between current to max value thumb for slider2
 function fillColor() {
   percent1 = (sliderOne.value / sliderMaxValue) * 100;
   percent2 = (sliderTwo.value / sliderMaxValue) * 100;
@@ -100,6 +114,7 @@ function fillColor() {
 
 function searchChange(ev){
   console.log(ev.target.value);
+  const showLoader = document.querySelector('');
   resetSort();
   document.querySelector('#movieSort').selectedIndex;
   console.log(document.querySelector('#movieSort').selectedIndex);

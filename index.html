@@ -64,11 +64,11 @@
           Search results: <span id="search__name"></span>
         </h2>
 
-        <div class="container">
+        <div class="filter__container">
           <div class="values">
             <h2 class="price__range">
               <span class="price__range--title"> Price Range : </span>
-              $<span id="range1">0</span> to $<span id="range2">100000</span>
+              From <span id="range1">1900</span> to <span id="range2">2025</span>
             </h2>
           </div>
           <div class="range__filter">
@@ -78,21 +78,21 @@
               id="slider-1"
               oninput="slideOne()"
               min="0"
-              max="100000"
-              value="10000"
+              max="1900"
+              value="1950"
             />
             <input
               type="range"
               id="slider-2"
               oninput="slideTwo()"
               min="0"
-              max="100000"
-              value="90000"
+              max="2025"
+              value="2024"
             />
           </div>
           <div class="display__range">
-            <span id="range1">$0</span>
-            <span id="range2">$100,000</span>
+            <span id="range1">1900</span>
+            <span id="range2">2025</span>
           </div>
 
           <select name="movieSort" id="movieSort"  onchange="sortChange(event)">
