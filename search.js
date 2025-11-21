@@ -1,26 +1,46 @@
 //API : https://www.omdbapi.com/?apikey=da55dd74&s=%22fast%22
 
+/*
+Here are the requirements for the Module 4 final project 👇
 
-async function main() {
-  try {
-    const response = await fetch(`https://www.omdbapi.com/?apikey=da55dd74&s="fast"`);
-    
-    // Check if the response is ok (status 200)
-    if (!response.ok) {
-      throw new Error(`HTTP error! Status: ${response.status}`);
-    }
-    
-    const usersData = await response.json(); // Convert the response to JSON
-    const usersDataResult =  usersData.Search;
-    
-    console.log(usersDataResult); // Log the JSON data by "Search"
-    usersDataResult.map((movie) => console.log(movie));
+HTML Structure: Properly structured HTML with semantic elements
 
-  } catch (error) {
-    console.error("Error fetching data:", error);
-  }
-}
-  main();
+Styling (CSS): Layout and design using CSS
+
+API Fetching: Use an external API to fetch data dynamically
+
+Search Bar: User can type and search through the API
+
+Dynamic Results Display: Show results dynamically on the page
+
+Responsiveness: Make sure it looks good on both desktop and mobile
+
+Bonus(optional): Add a filter feature
+*/
+const moviesResult = document.querySelector(`#movies`);
+const searchName = document.querySelector(`#search__name`);
+let currentMovies;
+
+// async function main() {
+//   try {
+//     const response = await fetch(`https://www.omdbapi.com/?apikey=da55dd74&s="fast"`);
+    
+//     // Check if the response is ok (status 200)
+//     if (!response.ok) {
+//       throw new Error(`HTTP error! Status: ${response.status}`);
+//     }
+    
+//     const usersData = await response.json(); // Convert the response to JSON
+//     const usersDataResult =  usersData.Search;
+    
+//     console.log(usersDataResult); // Log the JSON data by "Search"
+//     usersDataResult.map((movie) => console.log(movie));
+
+//   } catch (error) {
+//     console.error("Error fetching data:", error);
+//   }
+// }
+//   main();
 
 
 
@@ -73,4 +93,109 @@ function fillColor() {
     )`;
   console.log(percent1, percent2);
   console.log(sliderTrack.style.background);
+}
+
+
+
+
+function searchChange(ev){
+  console.log(ev.target.value);
+  resetSort();
+  document.querySelector('#movieSort').selectedIndex;
+  console.log(document.querySelector('#movieSort').selectedIndex);
+  renderMovies(ev.target.value);
+  searchName.innerHTML = ev.target.value;
+}
+
+
+
+// async function renderMovies(searchTerm) {
+//   console.log(`I am searching.... ${searchTerm}`);
+//   const response = await fetch(`https://www.omdbapi.com/?apikey=da55dd74&s=${searchTerm}`);
+//   const data = await response.json();
+//   currentMovies = data.Search;
+//   console.log(currentMovies);
+  
+//   displayMovies(currentMovies);
+// }
+async function renderMovies(searchTerm) {
+    console.log(`I am searching.... ${searchTerm}`);
+    
+    try {
+        const response = await fetch(`https://www.omdbapi.com/?apikey=da55dd74&s=${searchTerm}`);
+        
+        // Check if the response is okay (status 200)
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        
+        const data = await response.json();
+        
+        // Check if movies were found
+        if (!data.Search) {
+            console.log("No results found.");
+            currentMovies = []; // Clear currentMovies if no results
+            displayMovies(currentMovies);
+            return;
+        }
+
+        currentMovies = data.Search;
+        console.log(currentMovies);
+        
+        // Display the movies
+        displayMovies(currentMovies);
+        
+    } catch (error) {
+        console.error("Error fetching data:", error);
+        // Optionally display a message to the user
+        document.getElementById("movies").innerHTML = "<p>Error fetching movies. Please try again.</p>";
+    }
+}
+
+
+function displayMovies(moviesList){
+  console.log(moviesList.length);
+
+  if(moviesList.length !== 0){
+    moviesResult.innerHTML = moviesList.map((movie) => {
+      return `<div class="movie__card">
+              <figure>
+                <img src="${movie.Poster}" alt="">
+              </figure>
+              
+              <h3>${movie.Title}</h3>
+                <p>${movie.Year}</p>
+                <p>${movie.Type}</p>
+            </div>`
+    }).join("");
+  }else {
+  
+    moviesResult.innerHTML = `<div">No Result </div>`;
+  }
+}
+
+
+function sortChange(ev){
+  console.log('after sort Change', currentMovies)
+  
+  const sortOption = ev.target.value;
+  //this creates a copy of array and using spreading will generate a copy
+  let sortedMovies = [...currentMovies];
+  console.log(sortedMovies);
+  
+  if(sortOption === "newest"){
+    sortedMovies.sort((a, z) => parseInt(z.Year) - parseInt(a.Year));
+  }else if(sortOption === "oldest"){
+    sortedMovies.sort((a, z) => parseInt(a.Year) - parseInt(z.Year));
+  }
+  console.log(sortedMovies);
+  displayMovies(sortedMovies);
+}
+
+function resetSort() {
+    // Sorting logic here (if needed)
+
+    // After sorting (or regardless), reset select index to 0
+    document.querySelector('#movieSort').selectedIndex = 0; 
+
 }

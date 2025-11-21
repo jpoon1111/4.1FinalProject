@@ -1,5 +1,24 @@
 @import url(https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap);
 
+/*
+Here are the requirements for the Module 4 final project 👇
+
+HTML Structure: Properly structured HTML with semantic elements
+
+Styling (CSS): Layout and design using CSS
+
+API Fetching: Use an external API to fetch data dynamically
+
+Search Bar: User can type and search through the API
+
+Dynamic Results Display: Show results dynamically on the page
+
+Responsiveness: Make sure it looks good on both desktop and mobile
+
+Bonus(optional): Add a filter feature
+*/
+
+
 * {
   margin: 0;
   padding: 0;
@@ -19,7 +38,7 @@ nav {
   justify-content: space-between;
   align-items: center;
   margin: 0 auto;
-  padding:22px 0;
+  padding: 22px 0;
   width: 100%;
   max-width: 1200px;
   z-index: 3;
@@ -88,13 +107,11 @@ a {
   color: #fff;
 }
 
-
 .search__bar--wrapper {
   position: absolute;
   width: 100%;
   z-index: 3;
-} 
-
+}
 
 #search {
   position: relative;
@@ -224,7 +241,6 @@ a {
     top: 0px;
     left: 0px;
     right: 0px;
-}
 */
 }
 /* 
@@ -465,6 +481,23 @@ input[type="range"]:hover::-ms-thumb {
   width: calc(100% + 20px);
 }
 
+/*
+  SORT
+
+*/
+
+#movieSort{
+  margin: 20px;
+  
+}
+
+
+
+/*
+  LOADING ICON
+
+*/
+
 .loading-state {
   display: none;
   margin: 80px 0;
@@ -483,15 +516,14 @@ input[type="range"]:hover::-ms-thumb {
     */
 }
 
-.loading-state svg{
+.loading-state svg {
   font-size: 30px;
   color: rgb(96, 48, 177);
-  width:1em;
+  width: 1em;
   height: 1em;
   overflow: visible;
--webkit-animation: rotate 1000ms infinite linear;
-       animation: rotate 1000ms infinite linear;
-
+  -webkit-animation: rotate 1000ms infinite linear;
+  animation: rotate 1000ms infinite linear;
 }
 
 @keyframes rotate {
@@ -502,30 +534,29 @@ input[type="range"]:hover::-ms-thumb {
   100% {
     transform: rotate(360deg);
   }
-} 
+}
 
-
-.cards{
+.cards {
   display: flex;
   justify-content: space-around;
   align-items: center;
   flex-wrap: wrap;
-  padding:20px;
+  padding: 20px;
 }
 
-.movie__card{
- border: 1px solid black;
- border-radius: 10px;
- overflow: hidden;
- flex: 0 1 calc(25% - 50px);
- margin-bottom:20px;
+.movie__card {
+  border: 1px solid black;
+  border-radius: 10px;
+  overflow: hidden;
+  flex: 0 1 calc(33.3% - 100px);
+  margin-bottom: 40px;
+  text-align: center;
+  white-space: nowrap;
+    max-width: 260px;
 }
-.movie__card img{
-  width:100%;
-  height:100%;
+.movie__card img {
+  width: 100%;
+  height: 100%;
   max-height: 300px;
 
-}
-.movie__card--details{
-  padding: 10px;
 }

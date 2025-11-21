@@ -22,7 +22,11 @@
       <div class="search__bar--wrapper">
         <h1 class="search__title">browse our cars</h1>
         <div class="input__wrapper">
-          <input type="text" placeholder="Search by Make, Model or Keyword" />
+          <input
+            type="text"
+            onchange="searchChange(event)"
+            placeholder="Search by Make, Model or Keyword"
+          />
           <div class="search__icon--wrapper">
             <svg
               data-v-390ceb07=""
@@ -54,8 +58,11 @@
         <div class="progress__bar--fill"></div>
         <div class="progress__bar--buffer"></div>
       </div>
+
       <div id="filter" class="content__wrapper content__wrapper--search">
-        <h2 class="result__title">Search results:</h2>
+        <h2 class="result__title">
+          Search results: <span id="search__name"></span>
+        </h2>
 
         <div class="container">
           <div class="values">
@@ -87,122 +94,17 @@
             <span id="range1">$0</span>
             <span id="range2">$100,000</span>
           </div>
+
+          <select name="movieSort" id="movieSort"  onchange="sortChange(event)">
+            <option value="default" selected disabled>Sort By Year</option>
+            <option value="newest">Newest to Oldest</option>
+            <option value="oldest">Oldest to Newest</option>
+          </select>
+
         </div>
       </div>
       <div id="filter"></div>
-      <div id="movies" class="cards">
-
-          <div class="loading-state">
-            <svg
-              data-v-cf78a876=""
-              data-v-ca62299c=""
-              aria-hidden="true"
-              focusable="false"
-              data-prefix="fas"
-              data-icon="spinner"
-              role="img"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 512 512"
-              class="svg-inline--fa fa-spinner fa-w-16"
-            >
-              <path
-                data-v-cf78a876=""
-                fill="currentColor"
-                d="M304 48c0 26.51-21.49 48-48 48s-48-21.49-48-48 21.49-48 48-48 48 21.49 48 48zm-48 368c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48zm208-208c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48zM96 256c0-26.51-21.49-48-48-48S0 229.49 0 256s21.49 48 48 48 48-21.49 48-48zm12.922 99.078c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48c0-26.509-21.491-48-48-48zm294.156 0c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48c0-26.509-21.49-48-48-48zM108.922 60.922c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.491-48-48-48z"
-                class=""
-              ></path>
-            </svg>
-          </div>
-          <div class="movie__card">
-            <figure>
-              <img src="https://m.media-amazon.com/images/M/MV5BNmU4OTA5NG…WFjNTMtYjdlMThlYzc4M2M4XkEyXkFqcGc@._V1_SX300.jpg" alt="">
-            </figure>
-            <div class="movie__card--details">
-            <h3>title of movie</h3>
-              <p>year</p>
-              <p>type (tv series or full movie or trailer)</p>
-              <p> descript of the movie</p>
-            </div>
-          </div>
-          <div class="movie__card">
-            <figure>
-              <img src="https://m.media-amazon.com/images/M/MV5BNmU4OTA5NG…WFjNTMtYjdlMThlYzc4M2M4XkEyXkFqcGc@._V1_SX300.jpg" alt="">
-            </figure>
-            <div class="movie__card--details">
-            <h3>title of movie</h3>
-              <p>year</p>
-              <p>type (tv series or full movie or trailer)</p>
-              <p> descript of the movie</p>
-            </div>
-          </div>
-          <div class="movie__card">
-            <figure>
-              <img src="https://m.media-amazon.com/images/M/MV5BNmU4OTA5NG…WFjNTMtYjdlMThlYzc4M2M4XkEyXkFqcGc@._V1_SX300.jpg" alt="">
-            </figure>
-            <div class="movie__card--details">
-            <h3>title of movie</h3>
-              <p>year</p>
-              <p>type (tv series or full movie or trailer)</p>
-              <p> descript of the movie</p>
-            </div>
-          </div>
-          <div class="movie__card">
-            <figure>
-              <img src="https://m.media-amazon.com/images/M/MV5BNmU4OTA5NG…WFjNTMtYjdlMThlYzc4M2M4XkEyXkFqcGc@._V1_SX300.jpg" alt="">
-            </figure>
-            <div class="movie__card--details">
-            <h3>title of movie</h3>
-              <p>year</p>
-              <p>type (tv series or full movie or trailer)</p>
-              <p> descript of the movie</p>
-            </div>
-          </div>
-          <div class="movie__card">
-            <figure>
-              <img src="https://m.media-amazon.com/images/M/MV5BNmU4OTA5NG…WFjNTMtYjdlMThlYzc4M2M4XkEyXkFqcGc@._V1_SX300.jpg" alt="">
-            </figure>
-            <div class="movie__card--details">
-            <h3>title of movie</h3>
-              <p>year</p>
-              <p>type (tv series or full movie or trailer)</p>
-              <p> descript of the movie</p>
-            </div>
-          </div>
-          <div class="movie__card">
-            <figure>
-              <img src="https://m.media-amazon.com/images/M/MV5BNmU4OTA5NG…WFjNTMtYjdlMThlYzc4M2M4XkEyXkFqcGc@._V1_SX300.jpg" alt="">
-            </figure>
-            <div class="movie__card--details">
-            <h3>title of movie</h3>
-              <p>year</p>
-              <p>type (tv series or full movie or trailer)</p>
-              <p> descript of the movie</p>
-            </div>
-          </div>
-          <div class="movie__card">
-            <figure>
-              <img src="https://m.media-amazon.com/images/M/MV5BNmU4OTA5NG…WFjNTMtYjdlMThlYzc4M2M4XkEyXkFqcGc@._V1_SX300.jpg" alt="">
-            </figure>
-            <div class="movie__card--details">
-            <h3>title of movie</h3>
-              <p>year</p>
-              <p>type (tv series or full movie or trailer)</p>
-              <p> descript of the movie</p>
-            </div>
-          </div>
-          <div class="movie__card">
-            <figure>
-              <img src="https://m.media-amazon.com/images/M/MV5BNmU4OTA5NG…WFjNTMtYjdlMThlYzc4M2M4XkEyXkFqcGc@._V1_SX300.jpg" alt="">
-            </figure>
-            <div class="movie__card--details">
-            <h3>title of movie</h3>
-              <p>year</p>
-              <p>type (tv series or full movie or trailer)</p>
-              <p> descript of the movie</p>
-            </div>
-          </div>
-        
-      </div>
+      <div id="movies" class="cards"></div>
     </section>
   </body>
 </html>
