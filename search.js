@@ -1,4 +1,31 @@
+//API : https://www.omdbapi.com/?apikey=da55dd74&s=%22fast%22
+
+
+async function main() {
+  try {
+    const response = await fetch(`https://www.omdbapi.com/?apikey=da55dd74&s="fast"`);
+    
+    // Check if the response is ok (status 200)
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    
+    const usersData = await response.json(); // Convert the response to JSON
+    const usersDataResult =  usersData.Search;
+    
+    console.log(usersDataResult); // Log the JSON data by "Search"
+    usersDataResult.map((movie) => console.log(movie));
+
+  } catch (error) {
+    console.error("Error fetching data:", error);
+  }
+}
+  main();
+
+
+
 window.onload = function () {
+
   slideOne();
   slideTwo();
 };
