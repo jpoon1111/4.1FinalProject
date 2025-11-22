@@ -24,7 +24,7 @@
         <div class="input__wrapper">
           <input
             type="text"
-            onchange="searchChange(event)"
+            id="search__entered"
             placeholder="Search by Make, Model or Keyword"
           />
           <div class="search__icon--wrapper">
@@ -53,22 +53,26 @@
       <div class="overlay"></div>
     </header>
     <section id="search">
-      <div class="progress__bar">
+      <div class="progress__bar progress__bar--primary ">
         <div class="progress__bar--track"></div>
         <div class="progress__bar--fill"></div>
         <div class="progress__bar--buffer"></div>
       </div>
 
       <div id="filter" class="content__wrapper content__wrapper--search">
-        <h2 class="result__title">
-          Search results: <span id="search__name"></span>
-        </h2>
-
-        <div class="filter__container">
+        <div class="search__result">
+          <h2 class="result__title">
+            Search results:
+          </h2>
+          <span id="search__keyword"></span>
+          
+        </div>
+         <div class="filter__container">
           <div class="values">
             <h2 class="price__range">
-              <span class="price__range--title"> Price Range : </span>
-              From <span id="range1">1900</span> to <span id="range2">2025</span>
+              <span class="price__range--title"> Year Range : </span>
+              <span id="range1">1900</span> to
+              <span id="range2">2025</span>
             </h2>
           </div>
           <div class="range__filter">
@@ -77,33 +81,55 @@
               type="range"
               id="slider-1"
               oninput="slideOne()"
-              min="0"
-              max="1900"
-              value="1950"
+              min="1900"
+              max="2025"
+              value="1980"
             />
             <input
               type="range"
               id="slider-2"
               oninput="slideTwo()"
-              min="0"
+              min="1900"
               max="2025"
-              value="2024"
+              value="2023"
             />
           </div>
           <div class="display__range">
             <span id="range1">1900</span>
             <span id="range2">2025</span>
           </div>
-
-          <select name="movieSort" id="movieSort"  onchange="sortChange(event)">
+          <select name="movieSort" id="movieSort" onchange="sortChange(event)">
             <option value="default" selected disabled>Sort By Year</option>
             <option value="newest">Newest to Oldest</option>
             <option value="oldest">Oldest to Newest</option>
           </select>
-
         </div>
+
+
       </div>
       <div id="filter"></div>
+      <div class="loading-state">
+        <svg
+          data-v-cf78a876=""
+          data-v-ca62299c=""
+          aria-hidden="true"
+          focusable="false"
+          data-prefix="fas"
+          data-icon="spinner"
+          role="img"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 512 512"
+          class="svg-inline--fa fa-spinner fa-w-16"
+          style="font-size: 30px; color: rgb(96, 48, 177)"
+        >
+          <path
+            data-v-cf78a876=""
+            fill="currentColor"
+            d="M304 48c0 26.51-21.49 48-48 48s-48-21.49-48-48 21.49-48 48-48 48 21.49 48 48zm-48 368c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48zm208-208c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48zM96 256c0-26.51-21.49-48-48-48S0 229.49 0 256s21.49 48 48 48 48-21.49 48-48zm12.922 99.078c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48c0-26.509-21.491-48-48-48zm294.156 0c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48c0-26.509-21.49-48-48-48zM108.922 60.922c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.491-48-48-48z"
+            class=""
+          ></path>
+        </svg>
+      </div>
       <div id="movies" class="cards"></div>
     </section>
   </body>

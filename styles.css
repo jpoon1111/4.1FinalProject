@@ -18,7 +18,6 @@ Responsiveness: Make sure it looks good on both desktop and mobile
 Bonus(optional): Add a filter feature
 */
 
-
 * {
   margin: 0;
   padding: 0;
@@ -30,6 +29,7 @@ header {
   position: relative;
   height: 326px;
   width: 100%;
+  padding: 2em;
 }
 
 nav {
@@ -38,7 +38,6 @@ nav {
   justify-content: space-between;
   align-items: center;
   margin: 0 auto;
-  padding: 22px 0;
   width: 100%;
   max-width: 1200px;
   z-index: 3;
@@ -215,6 +214,13 @@ a {
   bottom: 0;
   background-color: rgba(41, 25, 71, 0.83);
 }
+
+
+
+
+/*
+  PROGRESS BAR
+*/
 .progress__bar {
   height: 5px;
   overflow: hidden;
@@ -227,22 +233,24 @@ a {
   will-change: opacity, transform;
 
   background-color: rgba(68, 138, 255, 0.38);
-  background-color: var(
-    --md-theme-default-primary-on-,
-    rgba(68, 138, 255, 0.38)
-  );
+}
+
+.progress__bar--primary {
   background-color: rgba(96, 48, 177, 0.38);
-  background-color: var(
-    --md-theme-default-primary-on-,
-    rgba(96, 48, 177, 0.38)
-  );
-  /* element.style {
+}
+
+/*This is from CSS variables
+  */
+/* --md-theme-default-primary: #448aff;
+    --md-theme-default-accent: #ff5252;
+    --md-theme-default-theme: light; */
+
+/* element.style {
     position: absolute;
     top: 0px;
     left: 0px;
     right: 0px;
 */
-}
 /* 
 rogress-bar {
     height: 5px;
@@ -260,14 +268,11 @@ cubic-bezier(.4, 0, .2, 1);
   height: 100%;
   position: absolute;
   left: -150%;
-  transform-origin: top left;
-  background-color: rgb(96, 52, 177);
-  animation: progress-bar2 2s linear infinite;
 
-  /*
-    will-change: transform;
-    transform-origin: top left;
- */
+  background-color: rgb(96, 52, 177);
+  animation: progress-bar1 2s linear infinite;
+  will-change: transform;
+  transform-origin: top left;
 }
 
 .progress__bar--fill {
@@ -275,27 +280,98 @@ cubic-bezier(.4, 0, .2, 1);
   height: 100%;
   position: absolute;
   left: -55%;
-  transform-origin: top left;
+
   background-color: rgb(96, 52, 177);
-  animation: progress-bar1 2s linear infinite;
-  /* fill, .md-progress-bar.md-query .md-progress-bar-fill {
-    
-   
-}
-
-.md-progress-bar-buffer, .md-progress-bar-buffer:after, .md-progress-bar-fill, .md-progress-bar-fill:after, .md-progress-bar-track, .md-progress-bar-track:after {
-
-    will-change: transform; */
+  animation: progress-bar2 2s linear infinite;
+  will-change: transform;
+  transform-origin: top left;
 }
 
 .progress__bar--buffer {
   width: 100%;
   height: 100%;
   position: absolute;
+  will-change: transform;
   transform-origin: top left;
 }
 
+/*
+
+<div class="loading-bar"></div>
+
+
+
+CSS:
+
+.loading-bar {
+
+  position: fixed;
+
+  top: 0;
+
+  left: 0;
+
+  height: 4px;
+
+  width: 100%;
+
+  background: transparent;
+
+  overflow: hidden;
+
+}
+
+.loading-bar::before {
+
+  content: "";
+
+  position: absolute;
+
+  height: 100%;
+
+  width: 30%;
+
+  background: #7b3ff3;  //purple
+
+  animation: loading 0.8s linear infinite;
+
+}
+
+@keyframes loading {
+
+  0% {
+
+    transform: translateX(-100%);
+
+  }
+
+  100% {
+
+    transform: translateX(400%);
+
+  }
+
+}
+*/
+
 @keyframes progress-bar1 {
+  0% {
+    transform: translateX(0);
+  }
+  20% {
+    animation-timing-function: cubic-bezier(0.5, 0, 0.7, 0.5);
+    transform: translateX(0);
+  }
+  60% {
+    animation-timing-function: cubic-bezier(0.3, 0.38, 0.55, 0.96);
+    transform: translateX(83.67%);
+  }
+  100% {
+    transform: translateX(200.61%);
+  }
+}
+
+@keyframes progress-bar2 {
   0% {
     animation-timing-function: cubic-bezier(0.15, 0, 0.52, 0.41);
     transform: translateX(0);
@@ -313,22 +389,17 @@ cubic-bezier(.4, 0, .2, 1);
   }
 }
 
-@keyframes progress-bar2 {
-  0% {
-    transform: translateX(0);
+/*
+  Search Results : KEYWORD
+*/
+.search__result{
+    display: flex;
   }
-  20% {
-    animation-timing-function: cubic-bezier(0.5, 0, 0.7, 0.5);
-    transform: translateX(0);
+  #search__keyword{
+    color: rgba(96, 48, 177, 1);
+    font-size: 1.5em;
+    transform: translateX(0.5em);
   }
-  60% {
-    animation-timing-function: cubic-bezier(0.3, 0.38, 0.55, 0.96);
-    transform: translateX(83.67%);
-  }
-  100% {
-    transform: translateX(200.61%);
-  }
-}
 
 /* 
   SLIDER FILTER
@@ -348,7 +419,7 @@ cubic-bezier(.4, 0, .2, 1);
   justify-content: space-between;
 }
 
-.result__title {
+.search__result--title {
   color: #0a1f44;
   font-size: 28px;
   line-height: 1.25;
@@ -356,7 +427,7 @@ cubic-bezier(.4, 0, .2, 1);
 .range__filter {
   position: relative;
   width: 100%;
-  margin-bottom:1em;
+  margin-bottom: 1em;
 }
 .price__range {
   margin-bottom: 12px;
@@ -371,15 +442,14 @@ cubic-bezier(.4, 0, .2, 1);
 
 .filter__container {
   position: relative;
-  margin-top: 1em;
   margin-right: 1em;
   width: 30%;
   min-width: 335px;
-  height: 100px;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
+
 #sider-1,
 #sider-2 {
   accent-color: rgb(96, 52, 177);
@@ -489,20 +559,18 @@ input[type="range"]:hover::-ms-thumb {
 
 */
 
-#movieSort{
+#movieSort {
   margin: 20px;
   border-radius: 10px;
   padding: 1em;
   background-color: rgb(96, 52, 177);
-  color:#fff;
-  
+  color: #fff;
 }
 
-#movieSort:hover{
-  background-color: rgb(230,71,50);
+#movieSort:hover {
+  background-color: rgb(230, 71, 50);
   cursor: pointer;
 }
-
 
 /*
   LOADING ICON
@@ -547,6 +615,10 @@ input[type="range"]:hover::-ms-thumb {
   }
 }
 
+.loading-state.loading-state--display {
+  display: flex;
+}
+
 .cards {
   display: flex;
   justify-content: space-around;
@@ -563,11 +635,22 @@ input[type="range"]:hover::-ms-thumb {
   margin-bottom: 40px;
   text-align: center;
   white-space: nowrap;
-    max-width: 260px;
+  max-width: 260px;
 }
 .movie__card img {
   width: 100%;
   height: 100%;
   max-height: 300px;
+}
 
+
+@media (max-width: 768px) {
+
+  .search__result{
+    display: flex;
+  }
+
+}
+
+@media (max-width: 480px) {
 }
