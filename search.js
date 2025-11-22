@@ -53,6 +53,49 @@ let sliderTrack = document.querySelector(".slider-track");
 let sliderMaxValue = document.querySelector("#slider-1").max;
 let sliderMinValue = document.querySelector("#slider-1").min;
 
+function slideOne() {
+  console.log(parseInt(sliderTwo.value) - parseInt(sliderOne.value));
+  if (parseInt(sliderTwo.value) - parseInt(sliderOne.value) <= miniGap) {
+    sliderOne.value = parseInt(sliderTwo.value) - miniGap;
+  }
+
+  displayValOne.textContent = sliderOne.value;
+  fillColor();
+}
+
+function slideTwo() {
+  console.log(parseInt(sliderTwo.value) - parseInt(sliderOne.value));
+  if (parseInt(sliderTwo.value) - parseInt(sliderOne.value) <= miniGap) {
+    console.log(slideTwo.value);
+    sliderTwo.value = parseInt(sliderOne.value) + miniGap;
+  }
+  displayValTwo.textContent = sliderTwo.value;
+  fillColor();
+}
+
+// this will calculate the current range and fill based on where it is
+// fills the color gray for areas not part of the range
+// this will work anything between 0 to current thumb for slider1
+// and fills the range between two numbers in purple
+// this will work anything between current to max value thumb for slider2
+function fillColor() {
+  // setting the minimum year for the 0%
+  //(currentValue - minimumValue) / (maxValue - minValue)) * 100;
+  //this takes the result of the amount between current and minimum
+  //then takes the result of total range of value from max and minimum
+  //then divide current result from total range of values and multiply it by 100
+  //if minimum is 1900 like below, then it will be calculated to 0
+  percent1 = ((sliderOne.value - sliderMinValue) / (sliderMaxValue - sliderMinValue)) * 100;
+  percent2 = ((sliderTwo.value - sliderMinValue)/ (sliderMaxValue - sliderMinValue)) * 100;
+  console.log('PERCENT -', percent1, percent2);
+  sliderTrack.style.background = `linear-gradient(
+    to right, #dadae5 ${percent1}%, rgb(96, 52, 177) 
+    ${percent1}%,  rgb(96, 52, 177) ${percent2}%, 
+    #dada ${percent2}%
+    )`;
+  console.log(percent1, percent2);
+  console.log(sliderTrack.style.background);
+}
 
 function searchChange(ev) {
   console.log(ev.target.value);

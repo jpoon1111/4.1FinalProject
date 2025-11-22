@@ -215,9 +215,6 @@ a {
   background-color: rgba(41, 25, 71, 0.83);
 }
 
-
-
-
 /*
   PROGRESS BAR
 */
@@ -392,14 +389,14 @@ CSS:
 /*
   Search Results : KEYWORD
 */
-.search__result{
-    display: flex;
-  }
-  #search__keyword{
-    color: rgba(96, 48, 177, 1);
-    font-size: 1.5em;
-    transform: translateX(0.5em);
-  }
+.search__result {
+  display: flex;
+}
+#search__keyword {
+  color: rgba(96, 48, 177, 1);
+  font-size: 1.5em;
+  transform: translateX(0.5em);
+}
 
 /* 
   SLIDER FILTER
@@ -627,6 +624,12 @@ input[type="range"]:hover::-ms-thumb {
   padding: 20px;
 }
 
+.cards::after {
+  content: ""; /* Create a pseudo-element as a flex item */
+  flex: 1; /* Takes up remaining space to push last item left */
+} 
+
+
 .movie__card {
   border: 1px solid black;
   border-radius: 10px;
@@ -636,6 +639,7 @@ input[type="range"]:hover::-ms-thumb {
   text-align: center;
   white-space: nowrap;
   max-width: 260px;
+  margin:1em;
 }
 .movie__card img {
   width: 100%;
@@ -643,13 +647,10 @@ input[type="range"]:hover::-ms-thumb {
   max-height: 300px;
 }
 
-
 @media (max-width: 768px) {
-
-  .search__result{
+  .search__result {
     display: flex;
   }
-
 }
 
 @media (max-width: 480px) {
